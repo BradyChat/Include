@@ -34,9 +34,9 @@ class SQLiteManager {
 	SQLiteManager(char*);
 	~SQLiteManager();
 
-	bool ExecuteSQLQuery(char* SQL_Statements);        //|
- 	bool ExecuteSQLNonQuery(char* SQL_Statements);     //|----> Funzioni per Eseguire le Query 
-	void* ExecuteScalarQuery(char* SQL_Statements);    //|
+	bool ExecuteSQLQuery(char* SQL_Statements);          //|
+ 	//bool ExecuteSQLNonQuery(char* SQL_Statements);     //|----> Funzioni per Eseguire le Query 
+	//void* ExecuteScalarQuery(char* SQL_Statements);    //|
 }
 
 SQLiteManager::SQLiteManager(char* Database_Path) {
@@ -97,8 +97,5 @@ bool SQLiteManager::ExecuteSQLQuery(char* SQL_Statements) {
 	else
 		return false;
 }
-
-
-SQLiteManager::
 
 #endif
