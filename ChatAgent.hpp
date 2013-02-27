@@ -3,9 +3,12 @@
     Sanino Alessandro - Create
 
     27-02-2013
-	Sanino Alessandro - Aggiunta Metodi
+    Sanino Alessandro - Aggiunta Metodi
 
 **/
+
+#ifndef AGENT
+#define AGENT
 
 class ChatAgent {
 	private:
@@ -27,3 +30,5 @@ ChatAgent::ChatAgent(char* Ip, int Port) {
 ChatAgent::~ChatAgent() {
 	free(this->myIp);
 }
+
+#endif
