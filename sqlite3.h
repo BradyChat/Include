@@ -576,7 +576,7 @@ int sqlite3_busy_timeout(sqlite3*, int ms);
 ** [sqlite3_free()] directly.  Only [sqlite3_free_table()] is able to release 
 ** the memory properly and safely.
 **
-** The return value of this routine is the same as from [sqlite3_exec()].
+** The return value of this routine is the same as from [sqlite3()].
 */
 int sqlite3_get_table(
   sqlite3*,              /* An open database */
