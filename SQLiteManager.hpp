@@ -1,6 +1,6 @@
 /**
 
-  SQLIteManager.hpp
+	SQLIteManager.hpp
 	Libreria Wrapper di sqlite3.h per semplificare ulteriormente la 
 	Gestione di un Database SQLite
 
@@ -34,19 +34,19 @@ class SQLiteManager {
 	SQLiteManager(char*);
 	~SQLiteManager();
 
-	bool ExecuteSQLQuery(char* SQL_Statements);          //|
- 	//bool ExecuteSQLNonQuery(char* SQL_Statements);     //|----> Funzioni per Eseguire le Query 
-	//void* ExecuteScalarQuery(char* SQL_Statements);    //|
+	bool ExecuteSQLQuery(char* SQL_Statements);        //|
+ 	bool ExecuteSQLNonQuery(char* SQL_Statements);     //|----> Funzioni per Eseguire le Query 
+	void* ExecuteScalarQuery(char* SQL_Statements);    //|
 }
 
 SQLiteManager::SQLiteManager(char* Database_Path) {
 	this->dbPath = Database_Path;
-	this->Database = Open(dbPath);
+	Open(dbPath);
 }
 
 SQLiteManager::~SQLiteManager() {
 	free(dbPath);
-	free(Database);
+	sqlite3_free(Database);
 	if(Table != NULL)
 		sqlite3_free_table(Table);
 	free(Table);
@@ -81,7 +81,7 @@ bool SQLiteManager::Close() { //Chiude La Connessione
 
 
 bool SQLiteManager::ExecuteSQLQuery(char* SQL_Statements) {
-	char* MessaggiErrore;
+	char* MessaggiErrore; //temporanea
 	bool ret;
 	if(this.isConnected == true) {    // se non sono connesso al DB come minchia faccio a passargli le query?!?!
 		if(Table != NULL)             //se no perdo il riferimento istanziando una nuova tabella = MEMORY LEAK
