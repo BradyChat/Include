@@ -3,9 +3,12 @@
     Sanino Alessandro - Creazione
 
     27/02/2013
-	Sanino Alessandro - Aggiunta Metodi
+    Sanino Alessandro - Aggiunta Metodi
 
 **/
+
+#ifndef SERVER
+#define SERVER
 
 #include "ChatAgent.hpp"
 #include "ServerTCP.hpp"
@@ -42,3 +45,5 @@ Server::~Server() {
 	delete(binary);
 }
 
+
+#endif
