@@ -5,13 +5,16 @@
     27-02-2013
     Sanino Alessandro - Aggiunta Metodi
 
+    02-03-2013
+    Samuele Bonino - Correzione libreria
+
 **/
 
 #ifndef CLIENT
 #define CLIENT
 
 #include "ChatAgent.hpp"
-#include "ClientTCP.hpp"
+#include "SocketTCP.hpp"
 
 class Client : ChatAgent {
 	private:
@@ -20,12 +23,12 @@ class Client : ChatAgent {
 	ClientTCP *binary;
 
 	public:
-	sealed override bool Invia(char* Messaggio);
-	sealed override char* Ricevi();
+        override bool Invia(char* Messaggio);
+        override char* Ricevi();
 
 	Client(char* myIp, int myPort, char* ServerIp, int ServerPort);
 	~Client();
-}
+};
 
 Client::Client(char* myIp, int myPort, char* ServerIp, int ServerPort) : ChatAgent(myIp, myPort) {
 	this->ServerIp = ServerIp;
@@ -37,11 +40,11 @@ Client::~Client() {
 	delete(binary);
 }
 
-sealed override bool Client::Invia(char* Messaggio) {
+override bool Client::Invia(char* Messaggio) {
 	return this->binary->Invia(Messaggio);
 }
 
-sealed override char* Client::Ricevi() {
+override char* Client::Ricevi() {
 	return (this->binary->Ricevi());
 }
 
